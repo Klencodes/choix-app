@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lifty-admin": {
+    "choix-admin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -105,10 +105,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "lifty-admin:build:production"
+              "browserTarget": "choix-admin:build:production"
             },
             "development": {
-              "browserTarget": "lifty-admin:build:development"
+              "browserTarget": "choix-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -116,7 +116,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lifty-admin:build"
+            "browserTarget": "choix-admin:build"
           }
         },
         "test": {
@@ -141,5 +141,5 @@
       }
     }
   },
-  "defaultProject": "lifty-admin"
+  "defaultProject": "choix-admin"
 }

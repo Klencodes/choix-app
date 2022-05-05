@@ -1,5 +1,5 @@
 {
-  "name": "AdminDashboard",
+  "name": "Choix-Admin",
   "version": "1.0.1",
   "main": "server.js",
   "scripts": {
