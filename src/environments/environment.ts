@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'https://'
+  BASE_URL: 'https://choix-test-api.herokuapp.com/api/v1.0/web_portal/'
 };
 
 /*

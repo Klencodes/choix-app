@@ -13,6 +13,11 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { RightbarComponent } from './shared/rightbar/rightbar.component';
+import { LayoutComponent } from './layout/layout.component';
+import { CreateVoteComponent } from './pages/vote-module/create-vote/create-vote.component';
+import { VotesComponent } from './pages/vote-module/votes/votes.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CreateOrganizationComponent } from './pages/account/create-organization/create-organization.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,11 @@ import { RightbarComponent } from './shared/rightbar/rightbar.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    RightbarComponent
+    RightbarComponent,
+    LayoutComponent,
+    CreateVoteComponent,
+    VotesComponent,
+    CreateOrganizationComponent
 
     ],
   imports: [
@@ -30,6 +39,10 @@ import { RightbarComponent } from './shared/rightbar/rightbar.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-right'
+    })
 
   ],
   providers: [
