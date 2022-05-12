@@ -16,8 +16,7 @@ export class AuthService {
       private dataProvider: DataProviderService,
       private constantValues: ConstantValueService,
       private toast: ToastrService
-  ) {
-   }
+  ) {}
 
   // public get userValue(): User {
   //   return this.userSubject$.value;

@@ -17929,13 +17929,13 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   position: relative;
   top: 0;
   line-height: 1;
-  line-height: 60px;
+  line-height: 40px;
   -webkit-transition: all 0.5s;
   -ms-transition: all 0.5s;
   transition: all 0.5s;
   margin-right: 15px;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   background: transparent;
   text-align: center;
   padding: 0px;
@@ -17944,10 +17944,11 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 @media only screen and (max-width: 1400px) {
   .deznav .metismenu>li a>i {
-    height: 55px;
-    line-height: 55px;
-    width: 55px;
-    font-size: 1.25rem;
+      height: 40px;
+      line-height: 40px;
+      width: 40px;
+      font-size: 1.25rem;
+  
   }
 }
 

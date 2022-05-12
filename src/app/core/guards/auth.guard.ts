@@ -1,15 +1,17 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { LocalAuthService } from '../services/helpers/local-auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
     constructor(
         private router: Router,
-    ) { }
+        private localAuth: LocalAuthService
+    ) { console.log( this.localAuth.userObj)}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const token = localStorage.getItem('token')
-        if (token) {
+        const user = this.localAuth.userObj;
+        if (user.auth_token) {
             // check if route is restricted by role
             // if (route.data['user_type'] && !route.data['user_type'].includes(user.user_type)) {
             //     // role not authorized so redirect to home page

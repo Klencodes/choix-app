@@ -13,17 +13,17 @@ const routes: Routes = [
 
   { path: '', component: LayoutComponent, children: [
     { path: '', component: DashboardComponent,  },
-    { path: 'dashboard', component: DashboardComponent,  },
+    { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
 
     { path: 'votes', component: VotesComponent, data: { title: 'Votes' } },
     { path: 'votes/create-vote', component: CreateVoteComponent, data: { title: 'Create Vote' } },
 
     { path: 'account/profile', component: ProfileComponent, data: { title: 'Profile' } },
-    { path: 'account/create-organization', component: CreateOrganizationComponent, data: { title: 'Create Organization' } },
-  ], canActivate: [AuthGuard] },
+    // { path: 'account/create-organization', component: CreateOrganizationComponent, data: { title: 'Create Organization' } },
+  ], canActivate: [AuthGuard]},
 
   { path: 'auth', loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) },
-  // { path: 'account', loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule) },
+
   { path: '**', redirectTo:'dashboard', pathMatch: 'full' },
 
 ];
