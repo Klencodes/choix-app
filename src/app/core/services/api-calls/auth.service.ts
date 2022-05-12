@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { ICallback } from '../../classes/callback.interface';
 import { User } from '../../models/user';
@@ -10,43 +10,59 @@ import { DataProviderService } from '../helpers/data-provider.service';
   providedIn: 'root'
 })
 export class AuthService {
-  userSubject$ = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')));
+  // userSubject$ = new BehaviorSubject<any>(null);
 
   constructor(
       private dataProvider: DataProviderService,
       private constantValues: ConstantValueService,
-      // private toast: ToastrService
+      private toast: ToastrService
   ) {
    }
 
-  public get userValue(): User {
-    return this.userSubject$.value;
-  }
+  // public get userValue(): User {
+  //   return this.userSubject$.value;
+  // }
 
   /**
   * Create new User
   * @data data to submit to server
   * @callback ICallback back function that returns an error or result
-  */
-  register(data, callback: ICallback) {
-    this.dataProvider.postNoToken(this.constantValues.REGISTER_VIA_EMAIL_ENDPOINT, data).subscribe(result => {
+   */
+  signup(data, callback: ICallback) {
+    this.dataProvider.postNoToken(this.constantValues.SIGNUP_ENDPOINT, data).subscribe(result => {
       callback(null, result)
     }, error => {
       callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);
+      this.toast.error(error.message);
     })
   }
   /**
   * Verify email 
-  * @token token to submit to server
+  * @params params to submit to server
   * @callback ICallback back function that returns an error or result
   */
-  verifyEmail(token, callback: ICallback) {
-    this.dataProvider.getDataNoToken(this.constantValues.VERIFY_EMAIL_ENDPOINT + token).subscribe(result => {
+  verifyEmail(params, callback: ICallback) {
+    this.dataProvider.postData(this.constantValues.VERIFY_EMAIL_ENDPOINT, params).subscribe(result => {
       callback(null, result)
     }, error => {
       callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);
+      this.toast.error(error.message);
+    })
+  }
+  /**
+  * Login User with email
+  * @data data to submit to server
+  * @callback ICallback back function that returns an error or result
+  */
+  signin(data, callback: ICallback) {
+    this.dataProvider.postNoToken(this.constantValues.SIGNIN_ENDPOINT, data).subscribe(result => {   
+      const user = result.data
+      localStorage.setItem('user', JSON.stringify(user));
+      // this.userSubject$.next(user)
+      callback(null, result)
+    }, error => {
+      callback(error, null)
+      this.toast.error(error.message);
     })
   }
   /**
@@ -59,22 +75,8 @@ export class AuthService {
       callback(null, result)
     }, error => {
       callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);
+      this.toast.error(error.message);
 
-    })
-  }
-  /**
-  * Check password reset email 
-  * @uidb64 uidb64 to submit to server
-  * @token token to submit to server
-  * @callback ICallback back function that returns an error or result
-  */
-  checkPasswordResetToken(uidb64, token, callback: ICallback) {
-    this.dataProvider.postNoToken(this.constantValues.CHECK_PASSWORD_RESET_TOKEN_ENDPOINT + '?uidb64='+ uidb64 + '&token=' + token).subscribe(result => {
-      callback(null, result)
-    }, error => {
-      callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);
     })
   }
   /**
@@ -87,26 +89,9 @@ export class AuthService {
       callback(null, result)
     }, error => {
       callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);     
+      this.toast.error(error.message);     
     })
   }
-  /**
-  * Login User with email
-  * @data data to submit to server
-  * @callback ICallback back function that returns an error or result
-  */
-  login(data, callback: ICallback) {
-    this.dataProvider.postNoToken(this.constantValues.EMAIL_LOGIN_ENDPOINT, data).subscribe(result => {   
-      const user = result.data
-      localStorage.setItem('user', JSON.stringify(user));
-      this.userSubject$.next(user)
-      callback(null, result)
-    }, error => {
-      callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);
-    })
-  }
-
   /**
   * Logout User
   * @refresh refresh to submit to server
@@ -116,17 +101,15 @@ export class AuthService {
     this.dataProvider.postData(this.constantValues.LOGOUT_ENDPOINT, refresh).subscribe(result => {
       // this.stopRefreshTokenTimer();
       localStorage.removeItem('user');
-      this.userSubject$.next(null)
+      // this.userSubject$.next(null)
       callback(null, result)
     }, error => {
       callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);
+      this.toast.error(error.message);
     })
   }
-
-  
   /**
-* change user password with phone
+* change user password with email
 * @data data to submit to server
 * @callback ICallback back function that returns an error or result
 */
@@ -135,7 +118,7 @@ export class AuthService {
       callback(null, result)
     }, error => {
       callback(error, null)
-      //   this.notificationService.snackBarErrorMessage(error.message);     
+      this.toast.error(error.message);     
     })
   }
 }

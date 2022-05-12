@@ -54,7 +54,12 @@
               "src/assets/vendor/jqvmap/css/jqvmap.min.css",
               "src/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css",
               "src/assets/css/style.css",
-              "src/assets/vendor/owl-carousel/owl.carousel.css"
+              "src/assets/vendor/owl-carousel/owl.carousel.css",
+              "src/assets/vendor/jquery-smartwizard/dist/css/smart_wizard.min.css",
+              "./node_modules/ngx-toastr/toastr.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss"
+
+
             ],
             "scripts": [
               "src/assets/vendor/global/global.min.js",
@@ -64,8 +69,10 @@
               "src/assets/js/deznav-init.js",
               "src/assets/vendor/owl-carousel/owl.carousel.js",
               "src/assets/vendor/peity/jquery.peity.min.js",
-              "src/assets/vendor/apexchart/apexchart.js",
-              "src/assets/js/dashboard/dashboard-1.js"
+              "src/assets/js/dashboard/dashboard-1.js",
+              "src/assets/vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js",
+              "src/assets/vendor/jquery-validation/jquery.validate.min.js",
+              "src/assets/js/plugins-init/jquery.validate-init.js"
             ]
           },
           "configurations": {

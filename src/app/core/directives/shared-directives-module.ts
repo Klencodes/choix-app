@@ -6,6 +6,7 @@ import { DecimalOnlyDirective } from './decimal-only.directive';
 import { NoDuplicateDirective } from './no-duplicate-digit.directive';
 import { NoSpecialCharacterDirective } from './no-special-character.directive';
 import { NumberDirective } from './numbers-only.directive';
+import { ProductSortDirective } from './product-sort.directive';
  
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NumberDirective } from './numbers-only.directive';
     DecimalOnlyDirective,
     NoDuplicateDirective,
     NoSpecialCharacterDirective,
-    NumberDirective
+    NumberDirective,
+    ProductSortDirective
   ],
   imports: [
     CommonModule
@@ -25,8 +27,8 @@ import { NumberDirective } from './numbers-only.directive';
     DecimalOnlyDirective,
     NoDuplicateDirective,
     NoSpecialCharacterDirective,
-    NumberDirective
- 
+    NumberDirective,
+    ProductSortDirective,
   ]
 })
 export class SharedDirectivesModule { }
