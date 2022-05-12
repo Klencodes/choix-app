@@ -1,0 +1,42 @@
+<div class="authincation-bg">
+    <div class="authincation h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-5">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+                                <div class="text-center mb-3">
+                                    <a><img src="assets/images/logo-full.png" alt=""></a>
+                                </div>
+                                <h4 class="text-center mb-4 ">Sign in your account</h4>
+                                <form [formGroup]="orgForm" (ngSubmit)="onSubmit(orgForm?.value)"
+                                    class=" ion-margin-horizontal ">
+
+                                    <div class="new-product-img ion-margin-vertical">
+                                        <input type="file" class="inputfile" #filePrimaryPicture
+                                            (change)="uploadImage($event)">
+                                        <img class="product-img new-product-sm-img" [class.img-bg-spinner]="isUploading"
+                                            [src]="imageUrl" (click)="filePrimaryPicture?.click()" />
+                                        <input type="hidden" formControlName="image_url"> <br>
+                                        <!-- <a class="cursor-pointer text-primary text-sm product-image-guide" (click)="showImageRequirement()">What image can I upload?</a> -->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="mb-1 "><strong>Name</strong></label>
+                                        <input type="email" class="form-control" placeholder="hello@example.com"
+                                            formControlName="email">
+                                    </div>
+
+                                    <div class="ion-margin-vertical">
+                                        <button type="submit" class="btn btn-primary">Upload Product</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
